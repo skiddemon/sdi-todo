@@ -1,9 +1,6 @@
 /* 
 Things to add:
-    - Make the 'type your task' text disappear on click
-    - Make eventListener for Submit button
-        - Make clicking add task to list
-        - Make a message pop up and fade out instead of requiring clicking ok?
+    - Fix newTask Function so that it accepts input from string in input box
     - Make Remove Completed Tasks button work
         - Add an Are you sure? prompt
     - Add CSS on-hover styling to buttons and textbox
@@ -14,28 +11,35 @@ Things to add:
 */
 
 let submitButton = document.querySelector("#submitButton")
-
-submitButton.addEventListener("click", () => alert('Task Added!'))
+submitButton.addEventListener("click", () => newTask())
 
 let taskContainer = document.querySelector('fieldset')
 console.log(taskContainer)
 
+
+
 const newTask = () => {
+    let userString = document.getElementById('inputBox').value
+
     let newCheckbox = document.createElement('input')
     newCheckbox.type = 'checkbox'
     newCheckbox.id = 'init1'
 
     let newLabel = document.createElement('label')
     newLabel.setAttribute("for", "init1")
-    newLabel.innerHTML = 'Test'
+    newLabel.innerHTML = userString
 
     let insertBreak = document.createElement('br')
 
     taskContainer.appendChild(newCheckbox)
     taskContainer.appendChild(newLabel)
     taskContainer.appendChild(insertBreak)
+    
+    document.getElementById('inputBox').value = "";
 }
 
+let isBoxChecked = document.querySelector('#checked')
+console.log(isBoxChecked)
 
 // function(task) {
 //     console.log(task)
