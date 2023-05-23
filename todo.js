@@ -1,6 +1,7 @@
 /* 
 Things to add:
-    - Fix newTask Function so that it accepts input from string in input box
+    - Don't allow empty string input
+    - Reorder so new tasks are pushed to top rather than bottom.
     - Make Remove Completed Tasks button work
         - Add an Are you sure? prompt
     - Add CSS on-hover styling to buttons and textbox
