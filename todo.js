@@ -1,6 +1,5 @@
 /* 
 Things to add:
-    - Don't allow empty string input
     - Reorder so new tasks are pushed to top rather than bottom.
     - Make Remove Completed Tasks button work
         - Add an Are you sure? prompt
@@ -17,31 +16,39 @@ submitButton.addEventListener("click", () => newTask())
 let taskContainer = document.querySelector('fieldset')
 console.log(taskContainer)
 
+let isBoxChecked = document.querySelector('#removerButton')
+isBoxChecked.addEventListener("click", () => taskRemover())
 
+
+let id_increent = 0
 
 const newTask = () => {
     let userString = document.getElementById('inputBox').value
 
-    let newCheckbox = document.createElement('input')
-    newCheckbox.type = 'checkbox'
-    newCheckbox.id = 'init1'
+    if (userString === "") {
+        alert('Please input text before clicking "Add to List!"')
+    } else {
+        ++id_increent
 
-    let newLabel = document.createElement('label')
-    newLabel.setAttribute("for", "init1")
-    newLabel.innerHTML = userString
+        let newCheckbox = document.createElement('input')
+        newCheckbox.type = 'checkbox'
+        newCheckbox.className = 'checkbox'
+        newCheckbox.id = 'Task' + id_increent
 
-    let insertBreak = document.createElement('br')
+        let newLabel = document.createElement('label')
+        newLabel.setAttribute("for", 'Task' + id_increent)
+        newLabel.innerHTML = userString
 
-    taskContainer.appendChild(newCheckbox)
-    taskContainer.appendChild(newLabel)
-    taskContainer.appendChild(insertBreak)
-    
-    document.getElementById('inputBox').value = "";
+        let insertBreak = document.createElement('br')
+
+        taskContainer.appendChild(newCheckbox)
+        taskContainer.appendChild(newLabel)
+        taskContainer.appendChild(insertBreak)
+        
+        document.getElementById('inputBox').value = "";
+}}
+
+const taskRemover = () => {
+    //document.querySelector('#checked')
+    console.log('isBoxChecked')
 }
-
-let isBoxChecked = document.querySelector('#checked')
-console.log(isBoxChecked)
-
-// function(task) {
-//     console.log(task)
-// }
